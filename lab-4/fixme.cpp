@@ -13,19 +13,15 @@ using bsoncxx::builder::basic::kvp;
 
 std::map<std::string, Session> SessionAgregator::currentConnections;
 
-bool SessionAgregator::sessionDead(std::string uuidForSession) {
-    
-}
-
-void SessionAgregator::updateSessionTime(const std::string &uuidForSession, Session &thisSession) {
-    
-}
-
 bool SessionAgregator::diffMoreTtl(tm creationTime) {
     time_t seconds = time(NULL);
     tm *now = localtime(&seconds);
     auto diff = difftime(mktime(now), mktime(&creationTime));
     return diff >= TTL;
+}
+
+void SessionUpdate(Session session) {
+
 }
 
 Session SessionAgregator::getSessionById(std::string id) {
